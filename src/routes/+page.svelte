@@ -13,15 +13,18 @@
             <div class="score-item felix-score">
                 <h3>Felix</h3>
                 <p>{aktuellerStand.scoreA}</p>
+                <form method="POST" action="?/increaseScoreA"><button type="submit">Punkt für Felix</button></form>
             </div>
             <div class="score-item jenny-score">
                 <h3>Jenny</h3>
                 <p>{aktuellerStand.scoreB}</p>
+                <form method="POST" action="?/increaseScoreB"><button type="submit">Punkt für Jenny</button></form>
             </div>
         </div>
     </section>
 
     <section class="history">
+        <form method="POST" action="?/endWeek"><button type="submit">Sonntags Wochenauswertung erstellen</button></form>
         <h2>Punkte-Historie</h2>
         
         {#if historie && historie.length > 0}
@@ -36,15 +39,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {#each historie as eintrag}
-                        <tr>
-                            <td>{eintrag.woche}</td>
-                            <td>{eintrag.felix_punkte}</td>
-                            <td>{eintrag.jenny_punkte}</td>
-                            <td>{eintrag.wochen_ausgleich}</td>
-                            <td>{eintrag.gesamt_differenz}</td>
-                        </tr>
-                    {/each}
+                    {#each data.historie as woche, i}
+    <tr>
+        <td>{i + 1}</td>
+        <td>{woche.pointsA}</td>
+        <td>{woche.pointsB}</td>
+        <td>{woche.netDifference}</td>
+        <td>{#if woche.overallNetScore > 0}
+            Felix führt mit {woche.overallNetScore} Punkten
+            {:else if woche.overallNetScore < 0}
+            Jenny führt mit {Math.abs(woche.overallNetScore)} Punkten
+            {:else}
+            Gleichstand
+            {/if}
+        </td>
+    </tr>
+{/each}
                 </tbody>
             </table>
         {:else}
