@@ -1,3 +1,14 @@
+
+
+Dieses Projekt ist ein kleines privates Übungsprojekt, um SvelteKit praktisch auszuprobieren und ein besseres Verständnis für das Framework zu entwickeln.
+Im Mittelpunkt stand das Ziel, eine kleine einfache Anwendung zur Punkteverwaltung und zum Vergleich von Punkteständen zu erstellen und dabei die ersten grundlegenden Konzepte von SvelteKit kennenzulernen.
+
+
+
+
+
+
+
 # sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
